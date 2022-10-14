@@ -1,0 +1,66 @@
+<style>
+  button {
+    width: 120px;
+  }
+</style>
+<div class="container">
+  <h1>Administracion de users</h1>
+
+  <br>
+  <div class="col-sm">
+    <table class="table table-sm">
+      <thead>
+        <td>Id</td>
+        <td>Identificacion</td>
+        <td>Nombres</td>
+        <td>Apellidos</td>
+        <td>Email</td>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of userList">
+
+          <td> {{ item.Id }}</td>
+          <td> {{ item.Identificacion }}</td>
+          <td> {{ item.Nombre }}</td>
+          <td> {{ item.Apellidos }}</td>
+          <td> {{ item.Correo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button type="button" class=" btn btn-success" (click)="addBtnClick()"
+    *ngIf="isFormVisible==false">Agregar</button>
+    <!-- cuando la varaiblae EsFormularioVisible sea igual a true -->
+    <div *ngIf="isFormVisible==true" id="newContainer">
+      <h3 >Nuevo Usuario</h3>
+      <div>
+
+        <div class="input-group mb-3" >
+          <input [(ngModel)]="user.identification" type="number" class="form-control" placeholder="Identificacion"
+            aria-label="Identificacion" aria-describedby="basic-addon1" maxlength="10">
+        </div>
+
+        <div class="input-group mb-3">
+          <input [(ngModel)]="user.name" type="text" class="form-control" placeholder="Nombres" aria-label="Nombres"
+            aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <input [(ngModel)]="user.surnames" type="text" class="form-control" placeholder="Apellidos"
+            aria-label="Apellidos" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <input [(ngModel)]="user.email" type="email" class="form-control" placeholder="Correo"
+            aria-label="correo" aria-describedby="basic-addon1">
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="add()" >Guardar</button>
+
+      </div>
+
+    </div>
+
+
+</div>

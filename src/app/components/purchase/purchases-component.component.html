@@ -1,0 +1,24 @@
+<style>
+  button {
+    width: 120px;
+  }
+</style>
+<div class="container">
+  <h1>Compras de tickets</h1>
+
+  <select   [(ngModel)]="purchase.user_identification">
+    <option value="" disabled selected>Selecciona el comprador ...</option>
+    <option *ngFor="let item of userList" [value]="item.Identificacion" >{{"ID: "+item.Identificacion + " - " + item.Nombre + item.Apellidos}}</option>
+  </select>
+
+  <br>
+  <br>
+  <select [(ngModel)]="purchase.ticket_id">
+    <option value="" disabled selected >Selecciona tu reserva ...</option>
+    <option *ngFor="let item of ticketList" [value]="item.id"  [disabled]="item.status === 'No disponible'" >{{"Reserva # " + item.reference + " - " + item.status }}</option>
+  </select>
+  <br>
+  <br>
+  <button type="button" class=" btn btn-success" (click)="payment()" >Reservar</button>
+
+</div>
